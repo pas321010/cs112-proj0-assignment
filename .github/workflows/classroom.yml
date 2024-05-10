@@ -37,10 +37,36 @@ jobs:
         comparison-method: contains
         timeout: 10
         max-score: 1
+    - name: step 6
+      id: step-6
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: step 6
+        setup-command: make tester
+        command: "./tester step6"
+        input: ''
+        expected-output: 'size of an array: 80'
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: step 7
+      id: step-7
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: step 7
+        setup-command: make tester
+        command: "./tester step7"
+        input: ''
+        expected-output: '4294967295'
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         TEST-TEST_RESULTS: "${{steps.test-test.outputs.result}}"
         STEP-5_RESULTS: "${{steps.step-5.outputs.result}}"
+        STEP-6_RESULTS: "${{steps.step-6.outputs.result}}"
+        STEP-7_RESULTS: "${{steps.step-7.outputs.result}}"
       with:
-        runners: test-test,step-5
+        runners: test-test,step-5,step-6,step-7
