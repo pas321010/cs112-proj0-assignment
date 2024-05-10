@@ -22,9 +22,25 @@ jobs:
         command: "./proj0"
         timeout: 10
         max-score: 1
+    - name: step 5
+      id: step-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: step 5
+        setup-command: make tester
+        command: "./tester step5"
+        input: ''
+        expected-output: |-
+          37
+          45
+          25
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         TEST-TEST_RESULTS: "${{steps.test-test.outputs.result}}"
+        STEP-5_RESULTS: "${{steps.step-5.outputs.result}}"
       with:
-        runners: test-test
+        runners: test-test,step-5
