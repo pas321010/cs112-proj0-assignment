@@ -3,19 +3,19 @@
 using namespace std;
 
 void vars() {
-    // Add Step 3 code below this line.
+    // Add Step 2 code below this line.
 
-    // Add Step 4 code below this line.
+    // Add Step 3 code below this line.
 }
 
-// Step 5
+// Step 4
 void ns() {
 }
 
-// Step 6
+// Step 5
 void arrays() {
 }
 
-// Step 7
+// Step 6
 void dec() {
 }
