@@ -1,7 +1,6 @@
 name: Autograding Tests
-'on':
-- push
-- repository_dispatch
+"on":
+  - push
 permissions:
   checks: write
   actions: read
@@ -11,62 +10,62 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: test test
-      id: test-test
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: test test
-        setup-command: make
-        command: "./proj0"
-        timeout: 10
-        max-score: 1
-    - name: step 5
-      id: step-5
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: step 5
-        setup-command: make tester
-        command: "./tester step5"
-        input: ''
-        expected-output: |-
-          37
-          45
-          25
-        comparison-method: contains
-        timeout: 10
-        max-score: 1
-    - name: step 6
-      id: step-6
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: step 6
-        setup-command: make tester
-        command: "./tester step6"
-        input: ''
-        expected-output: 'size of an array: 80'
-        comparison-method: contains
-        timeout: 10
-        max-score: 1
-    - name: step 7
-      id: step-7
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: step 7
-        setup-command: make tester
-        command: "./tester step7"
-        input: ''
-        expected-output: '4294967295'
-        comparison-method: contains
-        timeout: 10
-        max-score: 1
-    - name: Autograding Reporter
-      uses: classroom-resources/autograding-grading-reporter@v1
-      env:
-        TEST-TEST_RESULTS: "${{steps.test-test.outputs.result}}"
-        STEP-5_RESULTS: "${{steps.step-5.outputs.result}}"
-        STEP-6_RESULTS: "${{steps.step-6.outputs.result}}"
-        STEP-7_RESULTS: "${{steps.step-7.outputs.result}}"
-      with:
-        runners: test-test,step-5,step-6,step-7
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: step 3
+        id: step-3
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: step 3
+          setup-command: make
+          command: "./tester step3"
+          timeout: 10
+          max-score: 1
+      - name: step 4
+        id: step-4
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: step 4
+          setup-command: make tester
+          command: "./tester step4"
+          input: ""
+          expected-output: |-
+            37
+            45
+            25
+          comparison-method: contains
+          timeout: 10
+          max-score: 1
+      - name: step 5
+        id: step-5
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: step 5
+          setup-command: make tester
+          command: "./tester step5"
+          input: ""
+          expected-output: "80"
+          comparison-method: contains
+          timeout: 10
+          max-score: 1
+      - name: step 6
+        id: step-6
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: step 6
+          setup-command: make tester
+          command: "./tester step6"
+          input: ""
+          expected-output: "4294967295"
+          comparison-method: contains
+          timeout: 10
+          max-score: 1
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          STEP-3_RESULTS: "${{steps.step-3.outputs.result}}"
+          STEP-4_RESULTS: "${{steps.step-4.outputs.result}}"
+          STEP-5_RESULTS: "${{steps.step-5.outputs.result}}"
+          STEP-6_RESULTS: "${{steps.step-6.outputs.result}}"
+        with:
+          runners: step-3,step-4,step-5,step-6

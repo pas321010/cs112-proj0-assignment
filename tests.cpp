@@ -2,6 +2,10 @@
 #include "catch.hpp"
 #include "functions.h"
 
+TEST_CASE("step3") {
+    vars();
+}
+
 TEST_CASE("step4") {
     ns();
 }
