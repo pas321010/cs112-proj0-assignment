@@ -38,5 +38,5 @@ void dec() {
     unsigned int a = 0;
     --a;
     cout << a << endl; 
-    //This oputputs a very large number because it cannot be negative, so it goes back up the highest nmber it can be. 
+    //This oputputs a very large number because it cannot be negative, so it goes back up the highest number it can be. 
 }
